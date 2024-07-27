@@ -158,14 +158,13 @@ Introduction rules: -/
 `p → False`. -/
 
 theorem And_swap (a b : Prop) :
-  a ∧ b → b ∧ a :=
-  by
+  a ∧ b → b ∧ a := by
     intro hab
     apply And.intro
-    apply And.right
-    exact hab
-    apply And.left
-    exact hab
+    · apply And.right
+      exact hab
+    · apply And.left
+      exact hab
 
 /- The above proof step by step:
 
