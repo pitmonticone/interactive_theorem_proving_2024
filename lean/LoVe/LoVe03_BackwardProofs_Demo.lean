@@ -158,13 +158,14 @@ Introduction rules: -/
 `p → False`. -/
 
 theorem And_swap (a b : Prop) :
-  a ∧ b → b ∧ a := by
+  a ∧ b → b ∧ a :=
+  by
     intro hab
     apply And.intro
-    · apply And.right
-      exact hab
-    · apply And.left
-      exact hab
+    apply And.right
+    exact hab
+    apply And.left
+    exact hab
 
 /- The above proof step by step:
 
@@ -325,10 +326,10 @@ theorem add_assoc (l m n : ℕ) :
 associative operator using the type class instance mechanism (explained in
 lecture 5). This is useful for the `ac_rfl` invocation below. -/
 
-instance Associative_add : Std.Associative add :=
+instance IsAssociative_add : IsAssociative ℕ add :=
   { assoc := add_assoc }
 
-instance Commutative_add : Std.Commutative add :=
+instance IsCommutative_add : IsCommutative ℕ add :=
   { comm := add_comm }
 
 theorem mul_add (l m n : ℕ) :
